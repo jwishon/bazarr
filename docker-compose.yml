@@ -1,0 +1,30 @@
+
+version: "3.8"
+services:
+  bazarr:
+    image: lscr.io/linuxserver/bazarr:latest
+    container_name: Bazarr
+    
+    environment:
+      - PUID=0
+      - PGID=0
+      - TZ=America/New_York
+      - DOCKER_MODS=ghcr.io/gilbn/theme.park:bazarr
+      - DOCKER_MODS=wayller/bazarr-mod-subsync:latest
+      - TP_COMMUNITY_THEME=true
+      - TP_THEME=blackberry-abyss
+    
+    volumes:
+      - /share/config/bazarr/config:/config
+      - /share/Movies:/movies #optional
+      - /share/TV:/tv #optional
+    
+    network_mode: mybridge
+    dns: 
+      - 192.168.2.25
+      - 192.168.2.15
+    
+    ports:
+      - 6767:6767
+    
+    restart: always
