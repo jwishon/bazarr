@@ -3,7 +3,7 @@ version: "3.8"
 services:
   bazarr:
     image: lscr.io/linuxserver/bazarr:latest
-    container_name: Bazarr-test
+    container_name: Bazarr
     
     environment:
       - PUID=0
@@ -25,6 +25,6 @@ services:
       - 192.168.2.15
     
     ports:
-      - 6768:6767
+      - 6767:6767
     
     restart: always
